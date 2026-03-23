@@ -1,0 +1,47 @@
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="brand-block">
+      <p class="brand-kicker">Northstar x AG Grid Inspired</p>
+      <h1>Client Intelligence Suite</h1>
+      <p>Modern banking operations presented with a cleaner, lighter data-product shell.</p>
+    </div>
+
+    <nav class="nav-links">
+      <a routerLink="/dashboard" routerLinkActive="active-link">Overview</a>
+      <a routerLink="/accounts" routerLinkActive="active-link">Accounts</a>
+      <a routerLink="/transactions" routerLinkActive="active-link">Transactions</a>
+      <a routerLink="/insights" routerLinkActive="active-link">Insights</a>
+      <a routerLink="/support" routerLinkActive="active-link">Support</a>
+    </nav>
+
+    <div class="sidebar-card">
+      <span>Workspace Mode</span>
+      <strong>Data Demo Shell</strong>
+      <p>Designed to feel closer to a polished AG Grid sample workspace.</p>
+    </div>
+
+    <div class="sidebar-card auth-card">
+      <span>Access</span>
+      <strong>{{ authService.isOAuthEnabled() ? 'OAuth protected' : 'Mock mode enabled' }}</strong>
+      <p>{{ authService.displayName() }}</p>
+      <button *ngIf="authService.isOAuthEnabled() && !authService.isAuthenticated()" (click)="authService.login()">Sign in</button>
+      <button *ngIf="authService.isOAuthEnabled() && authService.isAuthenticated()" (click)="authService.logout()">Sign out</button>
+    </div>
+  </aside>
+
+  <main class="main-panel">
+    <header class="topbar">
+      <div class="topbar-copy">
+        <p class="topbar-label">Northstar Banking Demo</p>
+        <h2>Wealth operations dashboard</h2>
+        <p class="topbar-subtitle">A lighter, grid-first experience for account and transaction workflows.</p>
+      </div>
+      <div class="topbar-actions">
+        <div class="topbar-badge">Angular + .NET</div>
+        <div class="topbar-badge">{{ authService.isOAuthEnabled() ? (authService.isAuthenticated() ? 'OAuth session active' : 'Authentication required') : 'Secure session' }}</div>
+      </div>
+    </header>
+
+    <router-outlet></router-outlet>
+  </main>
+</div>

@@ -1,0 +1,46 @@
+:root {
+  --bg-color: #eef6fc;
+  --bg-secondary: #f8fbfe;
+  --panel-color: #ffffff;
+  --text-color: #16324f;
+  --muted-text: #64809d;
+  --accent: #00a0df;
+  --accent-strong: #0b4678;
+  --line-color: #d7e6f4;
+}
+
+html, body {
+  margin: 0;
+  min-height: 100%;
+  background:
+    radial-gradient(circle at top left, rgba(0, 160, 223, 0.18), transparent 24%),
+    radial-gradient(circle at top right, rgba(91, 192, 235, 0.18), transparent 22%),
+    linear-gradient(180deg, #f7fbff, var(--bg-color) 58%, #e8f2fb);
+  color: var(--text-color);
+  font-family: "Segoe UI", "Aptos", "Trebuchet MS", sans-serif;
+}
+
+body {
+  min-height: 100vh;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+.ag-theme-quartz {
+  --ag-background-color: #f7fbff;
+  --ag-foreground-color: #16324f;
+  --ag-header-background-color: #ebf5ff;
+  --ag-header-foreground-color: #0b4678;
+  --ag-border-color: #d7e6f4;
+  --ag-row-border-color: #e7f0f8;
+  --ag-font-family: "Segoe UI", "Aptos", "Trebuchet MS", sans-serif;
+  --ag-selected-row-background-color: rgba(0, 160, 223, 0.1);
+}

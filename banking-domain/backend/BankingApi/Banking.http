@@ -1,0 +1,6 @@
+@NorthstarBankApi_HostAddress = http://localhost:5200
+
+GET {{NorthstarBankApi_HostAddress}}/api/banking/overview
+Accept: application/json
+
+###
