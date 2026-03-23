@@ -54,11 +54,11 @@ Set `oauth.enabled` to `true` and provide:
 
 This repo now includes a root `render.yaml` blueprint for:
 - a static Angular frontend
-- a .NET web API backend
+- a Docker-based .NET web API backend
 
 Render service layout:
 - frontend root: `banking-domain/frontend/banking-ui`
-- backend root: `banking-domain/backend/BankingApi`
+- backend Dockerfile: `banking-domain/backend/BankingApi/Dockerfile`
 
 Important environment variables:
 - frontend `API_BASE_URL`: set this to your backend Render URL, for example `https://northstar-banking-api.onrender.com`
@@ -70,3 +70,7 @@ Optional OAuth variables for the frontend static build:
 - `OAUTH_CLIENT_ID`
 - `OAUTH_SCOPE`
 - `OAUTH_REQUIRE_HTTPS`
+
+Render dashboard paths:
+- preferred: `New` -> `Blueprint`, then connect the repo and use the root `render.yaml`
+- manual fallback: create a `Static Site` for the frontend and a `Web Service` with `Language = Docker` for the backend

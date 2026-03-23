@@ -1,15 +1,12 @@
 services:
   - type: web
     name: northstar-banking-api
-    runtime: dotnet
-    rootDir: banking-domain/backend/BankingApi
-    buildCommand: dotnet publish -c Release -o ./out
-    startCommand: dotnet ./out/BankingApi.dll
+    runtime: docker
+    dockerfilePath: ./banking-domain/backend/BankingApi/Dockerfile
+    dockerContext: .
     envVars:
       - key: ASPNETCORE_ENVIRONMENT
         value: Production
-      - key: ASPNETCORE_URLS
-        value: http://0.0.0.0:$PORT
       - key: Authentication__Enabled
         value: false
       - key: Cors__AllowedOrigins__0
