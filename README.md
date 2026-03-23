@@ -49,3 +49,24 @@ Set `oauth.enabled` to `true` and provide:
 - `issuer`
 - `clientId`
 - `scope`
+
+## Deploy on Render
+
+This repo now includes a root `render.yaml` blueprint for:
+- a static Angular frontend
+- a .NET web API backend
+
+Render service layout:
+- frontend root: `banking-domain/frontend/banking-ui`
+- backend root: `banking-domain/backend/BankingApi`
+
+Important environment variables:
+- frontend `API_BASE_URL`: set this to your backend Render URL, for example `https://northstar-banking-api.onrender.com`
+- backend `Cors__AllowedOrigins__0`: set this to your frontend Render URL
+
+Optional OAuth variables for the frontend static build:
+- `OAUTH_ENABLED`
+- `OAUTH_ISSUER`
+- `OAUTH_CLIENT_ID`
+- `OAUTH_SCOPE`
+- `OAUTH_REQUIRE_HTTPS`

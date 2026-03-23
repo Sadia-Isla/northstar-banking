@@ -5,11 +5,29 @@ var builder = WebApplication.CreateBuilder(args);
 
 var authSection = builder.Configuration.GetSection(AuthenticationOptions.SectionName);
 var authOptions = authSection.Get<AuthenticationOptions>() ?? new AuthenticationOptions();
+var corsOrigins = builder.Configuration.GetSection("Cors:AllowedOrigins").Get<string[]>() ?? [];
 
 builder.Services.Configure<AuthenticationOptions>(authSection);
 builder.Services.AddSingleton(authOptions);
 builder.Services.AddSingleton<NorthstarBankApi.Data.BankingRepository>();
 builder.Services.AddControllers();
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(policy =>
+    {
+        if (corsOrigins.Length == 0 || corsOrigins.Contains("*"))
+        {
+            policy.AllowAnyOrigin()
+                .AllowAnyHeader()
+                .AllowAnyMethod();
+            return;
+        }
+
+        policy.WithOrigins(corsOrigins)
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+});
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
@@ -29,6 +47,7 @@ builder.Services.AddAuthorization(options =>
 
 var app = builder.Build();
 
+app.UseCors();
 app.UseAuthentication();
 app.UseAuthorization();
 
